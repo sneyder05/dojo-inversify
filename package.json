@@ -1,0 +1,36 @@
+{
+  "name": "dojo-inversify",
+  "version": "1.0.0",
+  "description": "Dojo Inversify",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src",
+    "start:dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sneyder Navia",
+  "license": "ISC",
+  "volta": {
+    "node": "16.14.2",
+    "yarn": "1.22.19"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.20.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@decorators/di": "^1.0.3",
+    "@decorators/express": "^2.6.0",
+    "express": "^4.18.1"
+  }
+}

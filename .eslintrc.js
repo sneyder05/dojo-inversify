@@ -1,0 +1,190 @@
+module.exports = {
+  'parser': '@typescript-eslint/parser',
+  'parserOptions': {
+    'project': 'tsconfig.eslint.json',
+    'tsconfigRootDir': __dirname,
+    'sourceType': 'module',
+  },
+  'plugins': [ '@typescript-eslint', 'import', ],
+  'extends': [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:import/typescript',
+  ],
+  'env': {
+    'node': true,
+  },
+  'rules': {
+    'semi': [ 'error', 'never', ],
+    'quotes': [ 2, 'single', ],
+    'comma-dangle': [ 'error', 'always', ],
+    'no-lonely-if': 'error',
+    'no-mixed-spaces-and-tabs': 'error',
+    'no-trailing-spaces': 'error',
+    'no-whitespace-before-property': 'error',
+    'array-callback-return': 'error',
+    'block-scoped-var': 'error',
+    'curly': 'error',
+    'default-case-last': 'error',
+    'no-alert': 'error',
+    'no-case-declarations': 'error',
+    'no-constructor-return': 'error',
+    'no-empty-pattern': 'error',
+    'no-eq-null': 'error',
+    'no-eval': 'error',
+    'no-extra-label': 'error',
+    'no-fallthrough': 'error',
+    'no-floating-decimal': 'error',
+    'no-global-assign': 'error',
+    'no-implicit-coercion': 'error',
+    'no-implied-eval': 'error',
+    'no-iterator': 'error',
+    'no-labels': 'error',
+    'no-lone-blocks': 'error',
+    'no-loop-func': 'error',
+    'no-multi-spaces': 'error',
+    'no-multi-str': 'error',
+    'no-new': 'error',
+    'no-new-func': 'error',
+    'no-new-wrappers': 'error',
+    'no-octal': 'error',
+    'no-octal-escape': 'error',
+    'no-proto': 'error',
+    'no-redeclare': 'error',
+    'no-return-assign': 'error',
+    'no-return-await': 'error',
+    'no-self-compare': 'error',
+    'no-throw-literal': 'error',
+    'no-bitwise': 'error',
+    'no-array-constructor': 'error',
+    'no-mixed-operators': 'warn',
+    'no-multi-assign': 'error',
+    'semi-spacing': 'error',
+    'space-infix-ops': 'error',
+    'space-before-blocks': 'error',
+    'arrow-parens': [ 'error', 'as-needed', ],
+    'arrow-spacing': 'error',
+    'no-confusing-arrow': 'error',
+    'no-duplicate-imports': 'error',
+    'object-curly-spacing': [ 'error', 'always', ],
+    'array-bracket-spacing': [ 'error', 'always', ],
+    'dot-location': [ 'error', 'property', ],
+    'max-statements': [ 'error', 50, ],
+    'key-spacing': [
+      'error', {
+        'beforeColon': false,
+      },
+    ],
+    'keyword-spacing': [
+      'error',
+      {
+        'before': true,
+      },
+    ],
+    'dot-notation': [
+      'error',
+      {
+        'allowKeywords': false,
+      },
+    ],
+    'consistent-return': [
+      'error',
+      {
+        'treatUndefinedAsUnspecified': false,
+      },
+    ],
+    'no-multiple-empty-lines': [
+      'error',
+      {
+        'max': 1, 'maxEOF': 0,
+      },
+    ],
+    'object-property-newline': [
+      'error',
+      {
+        'allowAllPropertiesOnSameLine': true,
+      },
+    ],
+    // Apply TS rules
+    '@typescript-eslint/comma-spacing': [ 'error', ],
+    '@typescript-eslint/func-call-spacing': [ 'error', ],
+    '@typescript-eslint/no-extra-parens': [ 'error', ],
+    '@typescript-eslint/brace-style': [ 'error', ],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        'selector': 'variableLike',
+        'format': [ 'camelCase', 'PascalCase', 'UPPER_CASE', ],
+      },
+      {
+        'selector': 'typeLike',
+        'format': [ 'PascalCase', ],
+      },
+      {
+        'selector': 'memberLike',
+        'modifiers': [ 'private', ],
+        'format': [ 'camelCase', 'UPPER_CASE', ],
+        'leadingUnderscore': 'allow',
+      },
+      {
+        'selector': 'interface',
+        'prefix': [ 'I', ],
+        'format': [ 'UPPER_CASE', 'StrictPascalCase', ],
+      },
+      {
+        'selector': 'variable',
+        'types': [ 'boolean', ],
+        'format': [ 'PascalCase', ],
+        'prefix': [ 'is', 'should', 'has', 'can', 'did', 'will', ],
+      },
+      {
+        'selector': 'parameterProperty',
+        'format': [ 'strictCamelCase', ],
+        'types': [ 'boolean', ],
+        'custom': {
+          'regex': '^(is|should|has|can|did|will)[A-Z]',
+          'match': true,
+        },
+        'filter': {
+          'regex': '^(transient|synchronize)$',
+          'match': false,
+        },
+      },
+      {
+        'selector': 'parameter',
+        'format': [ 'strictCamelCase', ],
+        'types': [ 'boolean', ],
+        'custom': {
+          'regex': '^(is|should|has|can|did|will)[A-Z]',
+          'match': true,
+        },
+      },
+      {
+        'selector': 'typeParameter',
+        'format': [ 'PascalCase', ],
+        'prefix': [ 'T', ],
+      },
+    ],
+    '@typescript-eslint/no-explicit-any': [
+      'warn',
+      {
+        'ignoreRestArgs': true,
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        'vars': 'all',
+        'varsIgnorePattern': '[I]\\w+',
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        'groups': [ 'builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type', ],
+        'newlines-between': 'always',
+      },
+    ],
+  },
+}
