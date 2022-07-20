@@ -1,11 +1,12 @@
-import { inject, injectable, } from 'inversify'
+import { inject, } from 'inversify'
+import { fluentProvide, } from 'inversify-binding-decorators'
 import Loki from 'lokijs'
 import nanoid from 'nanoid'
 
-import { TYPES, } from '../../../ioc'
+import { TAGS, TYPES, } from '../../../ioc'
 import { IService, } from '../../../types'
 
-@injectable()
+@fluentProvide(TYPES.Service).whenTargetNamed(TAGS.SaveUserByIdService).done()
 export default class SaveUserByIdService implements IService<void> {
   @inject(TYPES.InMemoryDB) private lokiDb: Loki
 

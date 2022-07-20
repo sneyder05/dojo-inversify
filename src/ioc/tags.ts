@@ -1,8 +1,8 @@
-/* eslint-disable dot-notation */
 export const TAGS = {
-  GetUserByIdService: Symbol.for('GetUserByIdService'),
-  DeleteUserByIdService: Symbol.for('DeleteUserByIdService'),
-  SaveUserByIdService: Symbol.for('SaveUserByIdService'),
+  GetUserByIdService: 'GetUserByIdService',
+  DeleteUserByIdService: 'DeleteUserByIdService',
+  SaveUserByIdService: 'SaveUserByIdService',
+  GetAllUsersService: 'GetAllUsersService',
 
-  GetUserByIdRepository: Symbol.for('GetUserByIdRepository'),
+  GetUserByIdRepository: 'GetUserByIdRepository',
 }

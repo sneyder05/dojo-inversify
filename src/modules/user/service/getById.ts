@@ -1,4 +1,5 @@
-import { inject, injectable, named, } from 'inversify'
+import { inject, named, } from 'inversify'
+import { fluentProvide, } from 'inversify-binding-decorators'
 import Loki from 'lokijs'
 
 import { NotFoundError, } from '../../../errors'
@@ -6,7 +7,7 @@ import { TAGS, TYPES, } from '../../../ioc'
 import { IService, } from '../../../types'
 import GetUserByIdRepository from '../repository/getByIdRepository'
 
-@injectable()
+@fluentProvide(TYPES.Service).whenTargetNamed(TAGS.GetUserByIdService).done()
 export default class GetUserByIdService implements IService<any> {
   @inject(TYPES.InMemoryDB) private lokiDb: Loki
   @inject(TYPES.Repository) @named(TAGS.GetUserByIdRepository) private repo: GetUserByIdRepository

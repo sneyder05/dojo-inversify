@@ -30,8 +30,10 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "inversify": "^6.0.1",
+    "inversify-binding-decorators": "^4.0.0",
     "inversify-express-utils": "^6.4.3",
     "lokijs": "^1.5.12",
     "nanoid": "2.1.11",

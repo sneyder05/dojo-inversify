@@ -1,4 +1,5 @@
-import { inject, injectable, named, } from 'inversify'
+import { inject, named, } from 'inversify'
+import { fluentProvide, } from 'inversify-binding-decorators'
 import Loki from 'lokijs'
 
 import { NotFoundError, } from '../../../errors'
@@ -7,7 +8,7 @@ import { IService, } from '../../../types'
 
 import GetUserByIdService from './getById'
 
-@injectable()
+@fluentProvide(TYPES.Service).whenTargetNamed(TAGS.DeleteUserByIdService).done()
 export default class DeleteUserByIdService implements IService<void> {
   @inject(TYPES.InMemoryDB) private lokiDb: Loki
   @inject(TYPES.Service) @named(TAGS.GetUserByIdService) private getUserByIdService: GetUserByIdService
