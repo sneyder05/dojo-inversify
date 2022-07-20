@@ -1,18 +1,18 @@
-import { Controller, Get, Response, } from '@decorators/express'
 
-@Controller('/')
-export default class GetUserByIdController {
-  @Get('/:id')
-  public async getById(@Response() res): Promise<void> {
-    res.send(this.genFakeUser())
-  }
+import { inject, named, } from 'inversify'
+import { controller, httpGet, interfaces, requestParam, } from 'inversify-express-utils'
 
-  private genFakeUser(): any {
-    return {
-      id: Math.random().toString().slice(3, 10),
-      name: 'Jane',
-      lastname: 'Doe',
-      _at: new Date().toISOString(),
-    }
+import { TAGS, TYPES, } from '../../../ioc'
+import GetUserByIdService from '../service/getById'
+
+@controller('/users')
+export default class GetUserByIdController implements interfaces.Controller {
+  public constructor(
+    @inject(TYPES.Service) @named(TAGS.GetUserByIdService) private getUserByIdService: GetUserByIdService,
+  ) {}
+
+  @httpGet('/:id')
+  public async getById(@requestParam('id') id: string): Promise<any> {
+    return this.getUserByIdService.run(id)
   }
 }

@@ -116,6 +116,7 @@ module.exports = {
       {
         'selector': 'variableLike',
         'format': [ 'camelCase', 'PascalCase', 'UPPER_CASE', ],
+        'leadingUnderscore': 'allow',
       },
       {
         'selector': 'typeLike',
@@ -173,10 +174,12 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-unused-vars': [
-      'warn',
+      'error',
       {
         'vars': 'all',
         'varsIgnorePattern': '[I]\\w+',
+        'argsIgnorePattern': '^_',
+        'caughtErrorsIgnorePattern': '^_',
       },
     ],
     'import/order': [

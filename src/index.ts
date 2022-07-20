@@ -1,15 +1,34 @@
+import 'reflect-metadata'
 import express from 'express'
+import prettyjson from 'prettyjson'
+import { getRouteInfo, InversifyExpressServer, } from 'inversify-express-utils'
 
-import appRoutes from './routes'
+import { container, } from './ioc'
 
-const app = express()
 const port = process.env.PORT ? parseInt(process.env.PORT) : 3000
 
-// attachControllers(app, [ GetUserByIdController, ])
-app.use(appRoutes)
+const server = new InversifyExpressServer(container)
+server.setConfig(app => {
+  app.use(express.json())
+})
 
-// app.get('/users/:id', (_, res) => {
-//   res.status(200).json({ done: 1, })
-// })
+server.setErrorConfig(app => {
+  app.use((err, _req, res, _next) => {
+    const error = {
+      status: err.status || 500,
+      message: err.message || 'Unknown error',
+    }
 
-app.listen(port, () => console.log(`App listening in port ${port}`))
+    res.status(err.status || 500).json(error)
+  })
+})
+
+const app = server.build()
+
+const routeInfo = getRouteInfo(container)
+
+app.listen(port, () => {
+  console.log(`App listening in port ${port}`)
+
+  console.log(prettyjson.render({ routes: routeInfo, }))
+})
